@@ -5,8 +5,15 @@ import pandas as pd
 
 app = Flask(__name__)
 ## load
-model = pickle.load(open('boston_model.pkl', 'rb'))
-scaler = pickle.load(open('scaler.pkl', 'rb'))
+import os
+
+BASE = os.path.dirname(__file__)
+
+model_path = os.path.join(BASE, 'boston_model.pkl')
+scaler_path = os.path.join(BASE, 'scaler.pkl')
+
+model = pickle.load(open(model_path, 'rb'))
+scaler = pickle.load(open(scaler_path, 'rb'))
 @app.route('/')
 def home():
     return render_template('home.html')
