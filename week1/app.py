@@ -39,6 +39,6 @@ def predict_form():
     return render_template('home.html', prediction_text="Predicted House Price is {}.".format(model_final_pred))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host = "0.0.0.0", port = int(os.environ.get("PORT",5000)), debug=True)
     
     
