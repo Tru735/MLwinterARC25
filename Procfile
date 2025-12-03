@@ -1,1 +1,0 @@
-web: gunicorn week1.app:app
