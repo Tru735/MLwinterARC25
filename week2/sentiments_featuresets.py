@@ -52,11 +52,11 @@ def create_dataset(pos, neg, test_size = 0.2):
     
     testing_size = int(test_size*len(features))
     
-    train_x = list(featuresx[:,0][:-testing_size])
-    train_y = list(featuresy[:,1][:-testing_size])
+    train_x = (featuresx[:-testing_size])
+    train_y = (featuresy[:-testing_size])
     
-    test_x = list(featuresx[:,0][-testing_size:])
-    test_y = list(featuresy[:,1][-testing_size:])
+    test_x = (featuresx[-testing_size:])
+    test_y = (featuresy[-testing_size:])
     
     return train_x, train_y, test_x, test_y
 
@@ -64,6 +64,7 @@ if __name__ == '__main__':
     pos = 'pos.txt'
     neg = 'neg.txt'
     train_x, train_y, test_x, test_y = create_dataset(pos, neg)
+    print(f"{train_x[0]} , {train_y[0]}") #Sample feature and label
     with open('sentiment_set.pickle', 'wb') as f:
         pickle.dump((train_x, train_y, test_x, test_y), f)
     print("Dataset created and saved to sentiment_set.pickle")
