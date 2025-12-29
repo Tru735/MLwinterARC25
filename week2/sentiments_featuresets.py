@@ -42,6 +42,8 @@ def sample_handling(data, lexicon, classification):
 
 def create_dataset(pos, neg, test_size = 0.2):
     lexicon = create_lexicon(pos, neg)
+    with open('lexicon.pickle', 'wb') as f:
+        pickle.dump(lexicon, f)
     features = []
     features += sample_handling(pos, lexicon, [1,0])
     features += sample_handling(neg, lexicon, [0,1])
